@@ -25,6 +25,9 @@ def link(url, label):
     return f'<a href="{escape(url, quote=True)}">{escape(label)}</a>'
 
 
+quick_links = ("GNOME", "COSMIC", "Games", "Android")
+
+
 def card(project):
     repo = project.get("repo")
     anchor = repo or project["id"]
@@ -45,7 +48,9 @@ def card(project):
     setup = ""
     if project.get("instructions"):
         setup = f'<div class="setup"><p>{escape(project["instructions"])}</p>{links}</div>'
-    return f"""<article id="{anchor}"{tracking}><div class="entry"><div class="meta">{escape(project["platform"])} · <span class="version">{version}</span></div>
+    topics = [topic.lower() for topic in quick_links
+              if topic in project["platform"] or topic == project["category"]]
+    return f"""<article id="{anchor}" data-topics="{' '.join(topics)}"{tracking}><div class="entry"><div class="meta">{escape(project["platform"])} · <span class="version">{version}</span></div>
 <h3>{escape(project["name"])}</h3>{description}</div>{preview}
 {setup}</article>"""
 
@@ -58,6 +63,12 @@ for i, (category, members) in enumerate(groups.items()):
     cards = "".join(card(p) for p in members)
     sections.append(f'<section id="{anchor}"><h2>{escape(category)} <small>{len(members)}</small></h2><div class="grid">{cards}</div></section>')
 
+shortcuts = "".join(link("#" + topic.lower(), topic) for topic in quick_links)
+filter_headers = "".join(
+    f'<div class="filter-heading" id="{topic.lower()}"><h2>{topic}</h2>{link("#directory", "All projects")}</div>'
+    for topic in quick_links
+)
+
 rows = []
 for release, project in sorted(released, key=lambda item: item[0]["publishedAt"], reverse=True):
     day = release["publishedAt"][:10]
@@ -67,9 +78,9 @@ page = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Illya Yalovyy · Project registry</title><meta name="description" content="Browse Illya Yalovyy’s applications, desktop extensions, developer tools and games. Find releases, screenshots and installation guides."><link rel="stylesheet" href="style.css"><script defer src="releases.js"></script></head>
 <body><a class="skip" href="#directory">Skip to projects</a><header><div class="wrap mast"><strong>Illya Yalovyy</strong>{link(OWNER, "GitHub profile")}</div></header>
-<main class="wrap"><div class="hero"><div><h1>Project<br>registry<span>.</span></h1><p>Applications, extensions, developer tools and games by Illya Yalovyy.</p><nav aria-label="Project categories">{''.join(nav)}</nav></div>
+<main class="wrap"><div class="hero"><div><h1>Project<br>registry<span>.</span></h1><p>Applications, extensions, developer tools and games by Illya Yalovyy.</p><nav class="shortcuts" aria-label="Quick links">{shortcuts}</nav><nav aria-label="Project categories">{''.join(nav)}</nav></div>
 <section class="ledger"><h2>Latest releases</h2><table><thead><tr><th>Project</th><th>Version</th><th>Published (UTC)</th></tr></thead><tbody>{''.join(rows)}</tbody></table><p class="meta">Release snapshot · {today} UTC</p></section></div>
-<div id="directory">{''.join(sections)}</div></main><footer class="wrap">Illya Yalovyy · {link(OWNER + "/IllyaYalovyy.github.io", "Registry source")}</footer></body></html>"""
+<div id="directory">{filter_headers}{''.join(sections)}</div></main><footer class="wrap">Illya Yalovyy · {link(OWNER + "/IllyaYalovyy.github.io", "Registry source")}</footer></body></html>"""
 out = ROOT / "docs"
 out.mkdir(exist_ok=True)
 (out / "index.html").write_text(page)
