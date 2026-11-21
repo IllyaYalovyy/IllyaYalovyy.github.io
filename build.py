@@ -14,10 +14,10 @@ inventory = {r["name"]: r for r in json.loads(Path(sys.argv[1]).read_text())}
 groups = defaultdict(list)
 released = []
 for project in projects:
-    repo = project["repo"]
-    metadata = inventory[repo]
-    if metadata["latestRelease"]:
-        released.append((metadata["latestRelease"], project))
+    if "repo" in project:
+        release = inventory[project["repo"]]["latestRelease"]
+        if release:
+            released.append((release, project))
     groups[project["category"]].append(project)
 
 
@@ -26,17 +26,24 @@ def link(url, label):
 
 
 def card(project):
-    repo = project["repo"]
-    metadata = inventory[repo]
-    release = metadata["latestRelease"]
-    version = link(release["url"], release["tagName"]) if release else "No GitHub release"
+    repo = project.get("repo")
+    anchor = repo or project["id"]
+    links = ""
+    tracking = ""
+    if repo:
+        release = inventory[repo]["latestRelease"]
+        version = link(release["url"], release["tagName"]) if release else "No GitHub release"
+        guide_label = "Project vision" if repo == "axiolog" else "Setup guide"
+        links = f'<div class="links">{link(project["guide"], guide_label)} {link(OWNER + "/" + repo, "Source")}</div>'
+        tracking = " data-github"
+    else:
+        version = escape(project["status"])
     preview = ""
     if "image" in project:
         preview = f'<a class="preview" href="{project["image"]}"><img loading="lazy" src="{project["image"]}" alt="{escape(project["alt"])}"></a>'
-    guide_label = "Project vision" if repo == "axiolog" else "Setup guide"
-    return f"""<article id="{repo}"><div class="entry"><div class="meta">{escape(project["platform"])} · <span class="version">{version}</span></div>
+    return f"""<article id="{anchor}"{tracking}><div class="entry"><div class="meta">{escape(project["platform"])} · <span class="version">{version}</span></div>
 <h3>{escape(project["name"])}</h3><p>{escape(project["description"])}</p></div>{preview}
-<div class="setup"><p>{escape(project["instructions"])}</p><div class="links">{link(project["guide"], guide_label)} {link(OWNER + "/" + repo, "Source")}</div></div></article>"""
+<div class="setup"><p>{escape(project["instructions"])}</p>{links}</div></article>"""
 
 
 nav = []
@@ -54,9 +61,9 @@ for release, project in sorted(released, key=lambda item: item[0]["publishedAt"]
 today = datetime.now(timezone.utc).date().isoformat()
 page = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Illya Yalovyy · Open-source projects</title><meta name="description" content="Browse Illya Yalovyy’s open-source applications, desktop extensions and developer tools. Find releases, screenshots and installation guides."><link rel="stylesheet" href="style.css"><script defer src="releases.js"></script></head>
+<title>Illya Yalovyy · Project registry</title><meta name="description" content="Browse Illya Yalovyy’s applications, desktop extensions, developer tools and Minecraft projects. Find releases, screenshots and installation guides."><link rel="stylesheet" href="style.css"><script defer src="releases.js"></script></head>
 <body><a class="skip" href="#directory">Skip to projects</a><header><div class="wrap mast"><strong>Illya Yalovyy</strong>{link(OWNER, "GitHub profile")}</div></header>
-<main class="wrap"><div class="hero"><div><h1>Open-source<br>projects<span>.</span></h1><p>Applications, extensions and tools by Illya Yalovyy.</p><nav aria-label="Project categories">{''.join(nav)}</nav></div>
+<main class="wrap"><div class="hero"><div><h1>Project<br>registry<span>.</span></h1><p>Applications, extensions, developer tools and Minecraft projects by Illya Yalovyy.</p><nav aria-label="Project categories">{''.join(nav)}</nav></div>
 <section class="ledger"><h2>Latest releases</h2><table><thead><tr><th>Project</th><th>Version</th><th>Published (UTC)</th></tr></thead><tbody>{''.join(rows)}</tbody></table><p class="meta">Release snapshot · {today} UTC</p></section></div>
 <div id="directory">{''.join(sections)}</div></main><footer class="wrap">Illya Yalovyy · {link(OWNER + "/IllyaYalovyy.github.io", "Registry source")}</footer></body></html>"""
 out = ROOT / "docs"

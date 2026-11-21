@@ -75,15 +75,6 @@
     "alt": "Claudometer usage display in GNOME Shell"
   },
   {
-    "repo": "focus-task",
-    "name": "Focus Task",
-    "category": "Panel applets & extensions",
-    "platform": "GNOME Shell",
-    "description": "Keep the current task in the top bar and review time spent on tasks, breaks and interruptions.",
-    "instructions": "Clone the repository, run npm run install:local, restart GNOME Shell or log back in, then enable the extension.",
-    "guide": "https://github.com/IllyaYalovyy/focus-task#install"
-  },
-  {
     "repo": "stock-dock",
     "name": "Stock Dock",
     "category": "Panel applets & extensions",
@@ -125,28 +116,32 @@
   {
     "repo": "axiolog",
     "name": "Axiolog",
-    "category": "Designs, exercises & forks",
+    "category": "Project designs",
     "platform": "Design stage",
     "description": "A proposed graph-based outliner for daily journaling, search and note discovery.",
     "instructions": "The repository currently contains design documents. Read the project vision for the planned workflow.",
     "guide": "https://github.com/IllyaYalovyy/axiolog/blob/main/VISION.md"
   },
   {
-    "repo": "lambda-action-filter",
-    "name": "Lambda Action Filter",
-    "category": "Designs, exercises & forks",
-    "platform": "Rust exercise",
-    "description": "A debugging assignment built around an intentionally broken AWS Lambda that filters lists of actions.",
-    "instructions": "Set up stable Rust and cargo-lambda, then follow the sample invocations and debugging tasks in the assignment.",
-    "guide": "https://github.com/IllyaYalovyy/lambda-action-filter#readme"
+    "id": "infestus-frontier",
+    "name": "Infestus Frontier",
+    "category": "Minecraft",
+    "platform": "Minecraft mod",
+    "description": "Grow and evolve a living industrial colony across the Overworld, Nether and End.",
+    "status": "Submitted to CurseForge",
+    "instructions": "Built for Minecraft Java Edition 1.21.1 with NeoForge. A public download has yet to be confirmed.",
+    "image": "images/infestus-frontier.webp",
+    "alt": "In-game view of the colony’s capsule stem"
   },
   {
-    "repo": "cosmic-files",
-    "name": "COSMIC Files fork",
-    "category": "Designs, exercises & forks",
-    "platform": "Upstream fork",
-    "description": "A fork of the System76 COSMIC file manager. Wayfarer Files is the independently maintained derivative.",
-    "instructions": "To build this fork, clone IllyaYalovyy/cosmic-files and follow the build steps in its README.",
-    "guide": "https://github.com/IllyaYalovyy/cosmic-files#build-the-project-from-source"
+    "id": "infestia",
+    "name": "Infestia",
+    "category": "Minecraft",
+    "platform": "Minecraft modpack",
+    "description": "A technical preview of Infestus Frontier with an in-game guidebook, advancements and JEI recipe lookup.",
+    "status": "Preparing first public pack",
+    "instructions": "Targets Minecraft 1.21.1, NeoForge and Java 21. The pack recommends 6 GB of memory and a new world. A public installer has yet to be confirmed.",
+    "image": "images/infestia.webp",
+    "alt": "In-game view of the grown bio-furnace featured in Infestia"
   }
 ]

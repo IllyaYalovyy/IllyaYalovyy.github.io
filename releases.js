@@ -42,7 +42,7 @@ async function refreshReleases() {
     row.insertCell().append(date);
     rows.set(repo, row);
   }
-  const results = await Promise.allSettled(Array.from(document.querySelectorAll("article"), refresh));
+  const results = await Promise.allSettled(Array.from(document.querySelectorAll("article[data-github]"), refresh));
   document.querySelector("tbody").replaceChildren(...Array.from(rows.values()).sort((a,b) =>
     b.querySelector("time").dateTime.localeCompare(a.querySelector("time").dateTime)));
   if (results.every(r => r.status === "fulfilled")) {
