@@ -125,7 +125,7 @@
   {
     "id": "infestus-frontier",
     "name": "Infestus Frontier",
-    "category": "Minecraft",
+    "category": "Games",
     "platform": "Minecraft mod",
     "description": "Grow and evolve a living industrial colony across the Overworld, Nether and End.",
     "status": "Submitted to CurseForge",
@@ -136,12 +136,19 @@
   {
     "id": "infestia",
     "name": "Infestia",
-    "category": "Minecraft",
+    "category": "Games",
     "platform": "Minecraft modpack",
     "description": "A technical preview of Infestus Frontier with an in-game guidebook, advancements and JEI recipe lookup.",
     "status": "Preparing first public pack",
     "instructions": "Targets Minecraft 1.21.1, NeoForge and Java 21. The pack recommends 6 GB of memory and a new world. A public installer has yet to be confirmed.",
     "image": "images/infestia.webp",
     "alt": "In-game view of the grown bio-furnace featured in Infestia"
+  },
+  {
+    "id": "klad",
+    "name": "klad",
+    "category": "Games",
+    "platform": "Game",
+    "status": "coming soon..."
   }
 ]
