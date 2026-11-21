@@ -1,0 +1,152 @@
+[
+  {
+    "repo": "rttx",
+    "name": "rttx",
+    "category": "Desktop applications",
+    "platform": "GNOME",
+    "description": "Arrange terminal panes in named workspaces and keep frequently used commands within reach.",
+    "instructions": "On Debian or Ubuntu, download the amd64 DEB and install it with apt. Fedora COPR and Flatpak instructions are also available.",
+    "guide": "https://github.com/IllyaYalovyy/rttx#install",
+    "image": "images/rttx.webp",
+    "imageSource": "https://raw.githubusercontent.com/IllyaYalovyy/rttx/mainline/clients/rttx/data/screenshots/rttx-workspaces.png",
+    "alt": "Named terminal workspaces with three split panes and the Places panel"
+  },
+  {
+    "repo": "axiotask",
+    "name": "Axiotask",
+    "category": "Desktop applications",
+    "platform": "Linux · Android",
+    "description": "Manage Google Tasks offline with quick capture, smart views, search and bulk edits.",
+    "instructions": "Download the RPM, DEB or Flatpak for Linux. On Android, install the signed APK on a device with Google Play Services and choose Connect.",
+    "guide": "https://github.com/IllyaYalovyy/axiotask#install-and-run",
+    "image": "images/axiotask.webp",
+    "imageSource": "https://raw.githubusercontent.com/IllyaYalovyy/axiotask/main/test/goldens/linux/quick_capture_light.png",
+    "alt": "Axiotask quick capture, smart views and task details on Linux"
+  },
+  {
+    "repo": "axiomd",
+    "name": "axiomd",
+    "category": "Desktop applications",
+    "platform": "GNOME",
+    "description": "Read Markdown files in a native GNOME viewer with support for tables, images and GitHub-style formatting.",
+    "instructions": "Use the Fedora RPM from the release, or build with cargo build --release and run scripts/install.sh --user from the checkout.",
+    "guide": "https://github.com/IllyaYalovyy/axiomd#installing",
+    "image": "images/axiomd.webp",
+    "imageSource": "https://raw.githubusercontent.com/IllyaYalovyy/axiomd/main/data/screenshots/reading-light.png",
+    "alt": "Markdown document rendered in the axiomd light reading theme"
+  },
+  {
+    "repo": "wayfarer-files",
+    "name": "Wayfarer Files",
+    "category": "Desktop applications",
+    "platform": "COSMIC",
+    "description": "A file manager derived from COSMIC Files, focused on everyday usability and reliable file operations.",
+    "instructions": "Follow the RPM or Pop!_OS DEB packaging guide. Installing Wayfarer replaces the system COSMIC Files package.",
+    "guide": "https://github.com/IllyaYalovyy/wayfarer-files/blob/main/packaging/README.md"
+  },
+  {
+    "repo": "cosmic-ext-applet-ai-quota",
+    "name": "AI Quota",
+    "category": "Panel applets & extensions",
+    "platform": "COSMIC",
+    "description": "See how close Claude Code and Codex are to their usage limits directly in the panel or dock.",
+    "instructions": "Install the Fedora 45 x86_64 release RPM with dnf, then add AI Quota to your panel or dock in COSMIC Settings.",
+    "guide": "https://github.com/IllyaYalovyy/cosmic-ext-applet-ai-quota#fedora-45-rpm"
+  },
+  {
+    "repo": "cosmic-ext-applet-pulse",
+    "name": "Pulse",
+    "category": "Panel applets & extensions",
+    "platform": "COSMIC",
+    "description": "Track system resources in the panel, with a meter for each CPU core and detailed readings a click away.",
+    "instructions": "Download the Fedora 45 x86_64 RPM and SHA256SUMS, verify the checksum, install with dnf and add Pulse to the panel.",
+    "guide": "https://github.com/IllyaYalovyy/cosmic-ext-applet-pulse#fedora-rpm"
+  },
+  {
+    "repo": "claudometer",
+    "name": "Claudometer",
+    "category": "Panel applets & extensions",
+    "platform": "GNOME Shell",
+    "description": "Monitor Claude Code and Codex usage limits from the GNOME top bar.",
+    "instructions": "Install the release ZIP with gnome-extensions install --force followed by the ZIP filename. Log back in and enable Claudometer.",
+    "guide": "https://github.com/IllyaYalovyy/claudometer#install",
+    "image": "images/claudometer.webp",
+    "imageSource": "https://raw.githubusercontent.com/IllyaYalovyy/claudometer/main/docs/screenshot.png",
+    "alt": "Claudometer usage display in GNOME Shell"
+  },
+  {
+    "repo": "focus-task",
+    "name": "Focus Task",
+    "category": "Panel applets & extensions",
+    "platform": "GNOME Shell",
+    "description": "Keep the current task in the top bar and review time spent on tasks, breaks and interruptions.",
+    "instructions": "Clone the repository, run npm run install:local, restart GNOME Shell or log back in, then enable the extension.",
+    "guide": "https://github.com/IllyaYalovyy/focus-task#install"
+  },
+  {
+    "repo": "stock-dock",
+    "name": "Stock Dock",
+    "category": "Panel applets & extensions",
+    "platform": "GNOME Shell",
+    "description": "Rotate stock prices in the top bar and receive alerts when a ticker crosses a configured threshold.",
+    "instructions": "Link the extension into your user extensions directory, compile its schemas, log back in and enable Stock Dock in Extensions.",
+    "guide": "https://github.com/IllyaYalovyy/stock-dock#install-local-dev",
+    "image": "images/stock-dock.webp",
+    "imageSource": "https://raw.githubusercontent.com/IllyaYalovyy/stock-dock/main/docs/screenshots/stockdock-panel.png",
+    "alt": "Stock Dock ticker in the GNOME top panel"
+  },
+  {
+    "repo": "ktask-rs",
+    "name": "ktask RS",
+    "category": "Developer & creative tools",
+    "platform": "Terminal",
+    "description": "Supervise AI coding tasks from a terminal workspace with review gates and observable success criteria.",
+    "instructions": "From a checkout, run cargo run --locked -- --demo to explore the interface. Use make install for the ktask command.",
+    "guide": "https://github.com/IllyaYalovyy/ktask-rs#readme"
+  },
+  {
+    "repo": "RetroWork",
+    "name": "RetroWork",
+    "category": "Developer & creative tools",
+    "platform": "Desktop IDE",
+    "description": "A Rust IDE workbench with a docked source tree, tabbed documents and a reusable plugin platform.",
+    "instructions": "Clone the repository and run cargo run from its root to start the workbench.",
+    "guide": "https://github.com/IllyaYalovyy/RetroWork#run-the-demo"
+  },
+  {
+    "repo": "avz",
+    "name": "avz",
+    "category": "Developer & creative tools",
+    "platform": "Command line",
+    "description": "Render an MP3 as a music-reactive video using shader presets and GPU or software rendering.",
+    "instructions": "Install FFmpeg, clone the repository and run cargo install --path crates/avz-cli. Check the installation with avz --version.",
+    "guide": "https://github.com/IllyaYalovyy/avz#install"
+  },
+  {
+    "repo": "axiolog",
+    "name": "Axiolog",
+    "category": "Designs, exercises & forks",
+    "platform": "Design stage",
+    "description": "A proposed graph-based outliner for daily journaling, search and note discovery.",
+    "instructions": "The repository currently contains design documents. Read the project vision for the planned workflow.",
+    "guide": "https://github.com/IllyaYalovyy/axiolog/blob/main/VISION.md"
+  },
+  {
+    "repo": "lambda-action-filter",
+    "name": "Lambda Action Filter",
+    "category": "Designs, exercises & forks",
+    "platform": "Rust exercise",
+    "description": "A debugging assignment built around an intentionally broken AWS Lambda that filters lists of actions.",
+    "instructions": "Set up stable Rust and cargo-lambda, then follow the sample invocations and debugging tasks in the assignment.",
+    "guide": "https://github.com/IllyaYalovyy/lambda-action-filter#readme"
+  },
+  {
+    "repo": "cosmic-files",
+    "name": "COSMIC Files fork",
+    "category": "Designs, exercises & forks",
+    "platform": "Upstream fork",
+    "description": "A fork of the System76 COSMIC file manager. Wayfarer Files is the independently maintained derivative.",
+    "instructions": "To build this fork, clone IllyaYalovyy/cosmic-files and follow the build steps in its README.",
+    "guide": "https://github.com/IllyaYalovyy/cosmic-files#build-the-project-from-source"
+  }
+]
