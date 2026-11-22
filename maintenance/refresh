@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+set -euo pipefail
+mode=${1:---check}
+case "$mode" in --check|--publish) ;; *) echo "Usage: refresh [--check|--publish]" >&2; exit 2 ;; esac
+state=${XDG_STATE_HOME:-"$HOME/.local/state"}/project-registry
+mkdir -p "$state"
+exec 9>"$state/lock"
+flock -n 9 || { echo 'Another refresh is running'; exit 1; }
+work=$(mktemp -d)
+trap 'rm -rf -- "$work"' EXIT
+export GH_PROMPT_DISABLED=1 GIT_TERMINAL_PROMPT=0
+git_gh=(git -c credential.helper= -c 'credential.helper=!gh auth git-credential')
+remote=https://github.com/IllyaYalovyy/IllyaYalovyy.github.io.git
+"${git_gh[@]}" clone --quiet --depth 1 --branch main "$remote" "$work/site"
+cd "$work/site"
+gh repo list IllyaYalovyy --visibility public --limit 1000 --json name,latestRelease,pushedAt,isArchived > "$work/inventory.json"
+report="$state/review.txt"
+python3 maintenance/inspect.py "$work/inventory.json" > "$state/review.tmp"
+mv "$state/review.tmp" "$report"
+cat "$report"
+python3 build.py "$work/inventory.json"
+git diff --check
+if git diff --quiet -- docs; then echo 'Registry is current'; exit 0; fi
+git diff --stat -- docs
+if [[ "$mode" == --check ]]; then exit 0; fi
+git config user.name 'Illya Yalovyy'
+git config user.email '1623643+IllyaYalovyy@users.noreply.github.com'
+git add -- docs/index.html docs/style.css docs/releases.js
+git commit -m 'Refresh public project registry'
+"${git_gh[@]}" push origin HEAD:main

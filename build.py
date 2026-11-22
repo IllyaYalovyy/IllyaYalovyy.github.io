@@ -3,7 +3,6 @@ import json
 import shutil
 import sys
 from collections import defaultdict
-from datetime import datetime, timezone
 from html import escape
 from pathlib import Path
 
@@ -73,13 +72,12 @@ rows = []
 for release, project in sorted(released, key=lambda item: item[0]["publishedAt"], reverse=True):
     day = release["publishedAt"][:10]
     rows.append(f'<tr><th scope="row">{link("#" + project["repo"], project["name"])}</th><td>{link(release["url"], release["tagName"])}</td><td><time datetime="{day}">{day}</time></td></tr>')
-today = datetime.now(timezone.utc).date().isoformat()
 page = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Illya Yalovyy · Project registry</title><meta name="description" content="Browse Illya Yalovyy’s applications, desktop extensions, developer tools and games. Find releases, screenshots and installation guides."><link rel="stylesheet" href="style.css"><script defer src="releases.js"></script></head>
 <body><a class="skip" href="#directory">Skip to projects</a><header><div class="wrap mast"><strong>Illya Yalovyy</strong>{link(OWNER, "GitHub profile")}</div></header>
 <main class="wrap"><div class="hero"><div><h1>Project<br>registry<span>.</span></h1><p>Applications, extensions, developer tools and games by Illya Yalovyy.</p><nav class="shortcuts" aria-label="Quick links">{shortcuts}</nav><nav aria-label="Project categories">{''.join(nav)}</nav></div>
-<section class="ledger"><h2>Latest releases</h2><table><thead><tr><th>Project</th><th>Version</th><th>Published (UTC)</th></tr></thead><tbody>{''.join(rows)}</tbody></table><p class="meta">Release snapshot · {today} UTC</p></section></div>
+<section class="ledger"><h2>Latest releases</h2><table><thead><tr><th>Project</th><th>Version</th><th>Published (UTC)</th></tr></thead><tbody>{''.join(rows)}</tbody></table><p class="meta">Latest published GitHub releases</p></section></div>
 <div id="directory">{filter_headers}{''.join(sections)}</div></main><footer class="wrap">Illya Yalovyy · {link(OWNER + "/IllyaYalovyy.github.io", "Registry source")}</footer></body></html>"""
 out = ROOT / "docs"
 out.mkdir(exist_ok=True)

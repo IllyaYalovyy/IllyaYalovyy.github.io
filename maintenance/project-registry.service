@@ -1,0 +1,7 @@
+[Unit]
+Description=Refresh the public project registry
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/project-registry-refresh --publish
+TimeoutStartSec=5min

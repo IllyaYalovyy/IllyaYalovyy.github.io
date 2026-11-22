@@ -1,0 +1,43 @@
+{
+  "RetroWork": {
+    "guide": "0f19ec41f91f14a80dac712d703e80eac8d5aa0c"
+  },
+  "avz": {
+    "guide": "13003fb38a66aa56b6123ce00fb84b81f1a3ffe2"
+  },
+  "axiolog": {
+    "guide": "4cab50b47d454e7ec31ab403e9ce5769e5810dbf"
+  },
+  "axiomd": {
+    "guide": "1325aee49f0c55ceaf0b9f7cdb3ec6d150f18aab",
+    "screenshot": "c5259cc7ecaf9dffb015665998f6e9794c971f2a"
+  },
+  "axiotask": {
+    "guide": "01f5db7c402219713708aa67b3f1b159bd3865af",
+    "screenshot": "235fbb0b09a881df934e3594c15e625f183d7847"
+  },
+  "claudometer": {
+    "guide": "f5712c5866686d4173f30813c0bacf562592b21e",
+    "screenshot": "214b91ee53a4b35aedc6a58e9f1782ec8698b231"
+  },
+  "cosmic-ext-applet-ai-quota": {
+    "guide": "020c2d0c841fcd4ccfcf8f9ca146d3c05dba7eb8"
+  },
+  "cosmic-ext-applet-pulse": {
+    "guide": "43137d424a253f6fd8aea339d87d4882bc4216a1"
+  },
+  "ktask-rs": {
+    "guide": "8ec01cdbf852bd7bd882ff51508c0339e3d79999"
+  },
+  "rttx": {
+    "guide": "d93ff9a80bcfdcb03a808cedf01ed7e0cdb71156",
+    "screenshot": "f8cd9332607d604a732f27cee5edfb3c7e100888"
+  },
+  "stock-dock": {
+    "guide": "b6b9991d5678d05774b819116d828a9c63337172",
+    "screenshot": "c290fb6e5d1bde705188186ce669c367122a50ed"
+  },
+  "wayfarer-files": {
+    "guide": "8f5ddbc9040946bf1bfc7fb81b77dd63d6d46175"
+  }
+}
